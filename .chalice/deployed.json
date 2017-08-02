@@ -1,0 +1,12 @@
+{
+  "dev": {
+    "region": "us-east-1",
+    "api_handler_name": "barman-api-service-dev",
+    "api_handler_arn": "arn:aws:lambda:us-east-1:572226911665:function:barman-api-service-dev",
+    "rest_api_id": "sr80hatym0",
+    "lambda_functions": {},
+    "chalice_version": "1.0.0b2",
+    "api_gateway_stage": "dev",
+    "backend": "api"
+  }
+}
