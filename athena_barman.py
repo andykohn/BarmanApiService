@@ -14,8 +14,8 @@ class AthenaBarman:
         query_execution_id = self.__submit_athena_query(client, sql_drink)
         self.__wait_for_athena_query_complete(client, query_execution_id)
 
-        response = self.__process_athena_results(client, query_execution_id)
-        self.__my_logging_handler(response)
+        # self.__my_logging_handler(response)
+        response = self.__process_result_rows(client, query_execution_id)
         return response
 
     def __submit_athena_query(self, client, query):
@@ -101,6 +101,74 @@ class AthenaBarman:
         else:
             sql = "SELECT 1"
         return sql
+
+    def __process_result_rows(self, client, query_execution_id):
+
+        query_results = self.__process_athena_results(client, query_execution_id)
+        print query_results
+
+        column_info_list = query_results['ResultSet']['ResultSetMetadata']['ColumnInfo']
+        is_first_row_processed = False
+        while True:
+
+            results = query_results['ResultSet']
+
+            for row in results:
+                if not is_first_row_processed:
+                    # Process the row. The first row of the first page holds the column names.
+                    continue
+                # processRow(row, columnInfoList)
+
+            # If the nextToken is null, there are no more pages to read. Break out of the loop.
+            next_token = query_results.get('NextToken', None)
+            if next_token is None:
+                break
+
+            query_results = client.get_query_results(
+                QueryExecutionId=query_execution_id,
+                NextToken=next_token
+            )
+#
+# private static void processRow(Row row, List<ColumnInfo> columnInfoList)
+# {
+# for (int i = 0; i < columnInfoList.size(); ++i) {
+# switch (columnInfoList.get(i).getType()) {
+# case "varchar":
+# // Convert and Process as String
+# break;
+# case "tinyint":
+# // Convert and Process as tinyint
+# break;
+# case "smallint":
+# // Convert and Process as smallint
+# break;
+# case "integer":
+# // Convert and Process as integer
+# break;
+# case "bigint":
+# // Convert and Process as bigint
+# break;
+# case "double":
+# // Convert and Process as double
+# break;
+# case "boolean":
+# // Convert and Process as boolean
+# break;
+# case "date":
+# // Convert and Process as date
+# break;
+# case "timestamp":
+# // Convert and Process as timestamp
+# break;
+# default:
+# throw new RuntimeException("Unexpected Type is not expected" + columnInfoList.get(i).getType());
+# }
+# }
+# }
+
+
+
+
 
     def __my_logging_handler(self, event):
         logger = logging.getLogger()

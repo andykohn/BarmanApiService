@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bcf5434d-9505-426d-bb3e-92b727f7a6e1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/athena_barman.py" afterPath="$PROJECT_DIR$/athena_barman.py" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,7 +15,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/barman_api_service$athena_barman.coverage" NAME="athena_barman Coverage Results" MODIFIED="1501633535185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/barman_api_service$app.coverage" NAME="app Coverage Results" MODIFIED="1501633919889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/barman_api_service$app.coverage" NAME="app Coverage Results" MODIFIED="1501702019047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -27,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+            <state relative-caret-position="195">
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -39,22 +39,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="athena_barman.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="athena_barman.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/athena_barman.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="93" column="48" lean-forward="false" selection-start-line="93" selection-start-column="48" selection-end-line="93" selection-end-column="48" />
+            <state relative-caret-position="244">
+              <caret line="96" column="16" lean-forward="true" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="16" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
-                <marker date="1501633917000" expanded="true" signature="3552:3584" ph="SELECT * FRO... drinks" />
-                <marker date="1501633917000" expanded="true" signature="3552:3585" ph="SELECT * FRO... drinks" />
-                <marker date="1501633917000" expanded="true" signature="3552:3648" ph="SELECT * FRO... drinks" />
-                <marker date="1501633917000" expanded="true" signature="3552:3649" ph="SELECT * FRO... drinks" />
-                <marker date="1501633917000" expanded="true" signature="3552:3695" ph="SELECT * FRO... drinks" />
-                <marker date="1501633917000" expanded="true" signature="3552:3750" ph="SELECT * FRO... drinks" />
-                <marker date="1501633917000" expanded="true" signature="3552:3877" ph="SELECT * FRO... drinks" />
-                <marker date="1501633917000" expanded="true" signature="3552:3922" ph="SELECT * FRO... drinks" />
-                <marker date="1501633917000" expanded="true" signature="3552:3974" ph="SELECT * FRO... drinks" />
+                <marker date="1501804745000" expanded="true" signature="3551:3583" ph="SELECT * FRO... drinks" />
+                <marker date="1501804745000" expanded="true" signature="3551:3584" ph="SELECT * FRO... drinks" />
+                <marker date="1501804745000" expanded="true" signature="3551:3647" ph="SELECT * FRO... drinks" />
+                <marker date="1501804745000" expanded="true" signature="3551:3648" ph="SELECT * FRO... drinks" />
+                <marker date="1501804745000" expanded="true" signature="3551:3694" ph="SELECT * FRO... drinks" />
+                <marker date="1501804745000" expanded="true" signature="3551:3749" ph="SELECT * FRO... drinks" />
+                <marker date="1501804745000" expanded="true" signature="3551:3876" ph="SELECT * FRO... drinks" />
+                <marker date="1501804745000" expanded="true" signature="3551:3921" ph="SELECT * FRO... drinks" />
+                <marker date="1501804745000" expanded="true" signature="3551:3973" ph="SELECT * FRO... drinks" />
               </folding>
             </state>
           </provider>
@@ -63,7 +63,7 @@
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file:///usr/local/lib/python2.7/site-packages/boto3/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
+            <state relative-caret-position="1200">
               <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
               <folding />
             </state>
@@ -92,8 +92,8 @@
       <list>
         <option value="$PROJECT_DIR$/BarmanAthena.py" />
         <option value="$PROJECT_DIR$/app.py" />
-        <option value="$PROJECT_DIR$/athena_barman.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/athena_barman.py" />
       </list>
     </option>
   </component>
@@ -126,7 +126,6 @@
     <panes>
       <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -144,6 +143,7 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -603,12 +603,13 @@
       <workItem from="1501624346332" duration="56000" />
       <workItem from="1501624906180" duration="239000" />
       <workItem from="1501625168542" duration="2384000" />
-      <workItem from="1501631311571" duration="3023000" />
+      <workItem from="1501631311571" duration="3913000" />
+      <workItem from="1501690732319" duration="5164000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8102000" />
+    <option name="totallyTimeSpent" value="14156000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="0" />
@@ -619,10 +620,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32952926" sideWeight="0.50625" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39942938" sideWeight="0.50625" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32952926" sideWeight="0.49375" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952926" sideWeight="0.490625" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -633,7 +634,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39942938" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39942938" sideWeight="0.49375" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -654,32 +655,53 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app.py</url>
-          <line>7</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/athena_barman.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/athena_barman.py</url>
-          <line>11</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/athena_barman.py</url>
-          <line>10</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="4" />
+      <option name="time" value="7" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="result['ResultSet']['ResultSetMetadata']['ColumnInfo']" />
+        <watch expression="result.get('NextToken', None)" language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/athena_barman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1395">
+          <caret line="93" column="48" lean-forward="false" selection-start-line="93" selection-start-column="48" selection-end-line="93" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+            <marker date="1501804745000" expanded="true" signature="3551:3583" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3584" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3647" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3648" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3694" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3749" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3876" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3921" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3973" ph="SELECT * FRO... drinks" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/site-packages/boto3/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -696,15 +718,15 @@
           <caret line="6" column="77" lean-forward="true" selection-start-line="6" selection-start-column="77" selection-end-line="6" selection-end-column="77" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <marker date="1501633917000" expanded="true" signature="3552:3584" ph="SELECT * FRO... drinks" />
-            <marker date="1501633917000" expanded="true" signature="3552:3585" ph="SELECT * FRO... drinks" />
-            <marker date="1501633917000" expanded="true" signature="3552:3648" ph="SELECT * FRO... drinks" />
-            <marker date="1501633917000" expanded="true" signature="3552:3649" ph="SELECT * FRO... drinks" />
-            <marker date="1501633917000" expanded="true" signature="3552:3695" ph="SELECT * FRO... drinks" />
-            <marker date="1501633917000" expanded="true" signature="3552:3750" ph="SELECT * FRO... drinks" />
-            <marker date="1501633917000" expanded="true" signature="3552:3877" ph="SELECT * FRO... drinks" />
-            <marker date="1501633917000" expanded="true" signature="3552:3922" ph="SELECT * FRO... drinks" />
-            <marker date="1501633917000" expanded="true" signature="3552:3974" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3583" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3584" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3647" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3648" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3694" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3749" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3876" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3921" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3973" ph="SELECT * FRO... drinks" />
           </folding>
         </state>
       </provider>
@@ -801,7 +823,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="5" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -809,7 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -817,34 +837,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file:///usr/local/lib/python2.7/site-packages/boto3/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
+        <state relative-caret-position="1200">
           <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/athena_barman.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="93" column="48" lean-forward="false" selection-start-line="93" selection-start-column="48" selection-end-line="93" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-            <marker date="1501633917000" expanded="true" signature="3552:3584" ph="SELECT * FRO... drinks" />
-            <marker date="1501633917000" expanded="true" signature="3552:3585" ph="SELECT * FRO... drinks" />
-            <marker date="1501633917000" expanded="true" signature="3552:3648" ph="SELECT * FRO... drinks" />
-            <marker date="1501633917000" expanded="true" signature="3552:3649" ph="SELECT * FRO... drinks" />
-            <marker date="1501633917000" expanded="true" signature="3552:3695" ph="SELECT * FRO... drinks" />
-            <marker date="1501633917000" expanded="true" signature="3552:3750" ph="SELECT * FRO... drinks" />
-            <marker date="1501633917000" expanded="true" signature="3552:3877" ph="SELECT * FRO... drinks" />
-            <marker date="1501633917000" expanded="true" signature="3552:3922" ph="SELECT * FRO... drinks" />
-            <marker date="1501633917000" expanded="true" signature="3552:3974" ph="SELECT * FRO... drinks" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -852,16 +852,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="84" column="4" lean-forward="true" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        <state relative-caret-position="195">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/athena_barman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="96" column="16" lean-forward="true" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+            <marker date="1501804745000" expanded="true" signature="3551:3583" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3584" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3647" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3648" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3694" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3749" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3876" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3921" ph="SELECT * FRO... drinks" />
+            <marker date="1501804745000" expanded="true" signature="3551:3973" ph="SELECT * FRO... drinks" />
           </folding>
         </state>
       </provider>
