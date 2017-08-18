@@ -1,3 +1,5 @@
+import athena_processor
+
 class BarmanEntity:
 
     def __init__(self, name):
@@ -42,16 +44,20 @@ class DrinkEntity(BarmanEntity):
                "ON m.ingredientid = i.ingredientid " \
                "WHERE d.iddrink IN (SELECT MAX(d.iddrink) iddrink " \
                "FROM drinks_db.drinks d " \
-               "WHERE UPPER(d.strdrink) LIKE UPPER('" + self.name + "'))"
+               "WHERE UPPER(d.strdrink) LIKE UPPER('" + self.name + "')) " \
+               "ORDER BY d.iddrink"
 
-    def process_result_rows(self, query_results):
+    def get_drink_with_ingredients(self):
+
+        athena = athena_processor.AthenaProcessor(self)
+
+        query_results = athena.get_athena_results()
 
         return_results = {}
-        return_results['ingredients'] = {}
-        # query_results = self.__process_athena_results(client, query_execution_id)
+        return_results['drink'] = {}
+        return_results['drink']['ingredients'] = {}
 
         column_info_list = query_results['ResultSet']['ResultSetMetadata']['ColumnInfo']
-        #while True:
 
         results = query_results['ResultSet']
 
@@ -61,21 +67,13 @@ class DrinkEntity(BarmanEntity):
                 continue
             # First item we grab the drink
             elif 1 == i:
-                col = DrinkEntity.valid_column
+                current_drink_id = row['Data'][0][list(row['Data'][0])[0]]
+
+            if current_drink_id == row['Data'][0][list(row['Data'][0])[0]]:
                 drink = self._process_row(row['Data'], column_info_list, DrinkEntity)
-                #drink = self.__process_row(row['Data'], column_info_list, col)
                 return_results.update(drink)
             ingredient = self._process_row(row['Data'], column_info_list, IngredientEntity)
-            return_results['ingredients'][str(i)] = ingredient
-            # If the nextToken is null, there are no more pages to read. Break out of the loop.
-            # next_token = query_results.get('NextToken', None)
-            # if next_token is None:
-            #     break
-            #
-            # query_results = client.get_query_results(
-            #     QueryExecutionId=query_execution_id,
-            #     NextToken=next_token
-            # )
+            return_results['drink']['ingredients'][str(i)] = ingredient
         return return_results
 
 

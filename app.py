@@ -4,8 +4,8 @@ import urllib.parse
 
 app = Chalice(app_name='barman-api-service')
 
-athena = AthenaBarman()
-print(athena.get_drink_from_athena('AMARETTO ROSE'))
+# athena = AthenaBarman()
+#print(AthenaBarman.get_drink_from_athena('AMARETTO ROSE'))
 
 
 @app.route('/')
@@ -17,7 +17,7 @@ def index():
 @app.route('/drink/{drink}')
 def get_drink(drink):
     drink = urllib.parse.unquote(drink)
-    return athena.get_drink_from_athena(drink)
+    return AthenaBarman.get_drink_from_athena(drink)
 
 # Get random drink
 @app.route('/drink/random')
