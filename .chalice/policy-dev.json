@@ -2,13 +2,34 @@
   "Version": "2012-10-17",
   "Statement": [
     {
+      "Effect": "Allow",
       "Action": [
         "logs:CreateLogGroup",
         "logs:CreateLogStream",
         "logs:PutLogEvents"
       ],
-      "Resource": "arn:aws:logs:*:*:*",
-      "Effect": "Allow"
+      "Resource": "arn:aws:logs:*:*:*"
+    },
+    {
+      "Sid": "Stmt1500316505000",
+      "Effect": "Allow",
+      "Action": [
+        "athena:*"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Sid": "Stmt1500328414000",
+      "Effect": "Allow",
+      "Action": [
+        "s3:*"
+      ],
+      "Resource": [
+        "arn:aws:s3:::drinkslistvir*",
+        "arn:aws:s3:::aws-athena-query-results*"
+      ]
     }
   ]
 }

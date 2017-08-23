@@ -1,13 +1,13 @@
-from chalice import Chalice
-from athena_barman import AthenaBarman
 import urllib.parse
 
+from chalice import Chalice
+
+from chalicelib.athena_barman import AthenaBarman
+
 app = Chalice(app_name='barman-api-service')
+app.debug = True
 
-# athena = AthenaBarman()
-#print(AthenaBarman.get_drink_from_athena('AMARETTO ROSE'))
-
-
+# import sys; print(sys.path)
 @app.route('/')
 def index():
     return {'hello': 'world'}
@@ -17,7 +17,9 @@ def index():
 @app.route('/drink/{drink}')
 def get_drink(drink):
     drink = urllib.parse.unquote(drink)
-    return AthenaBarman.get_drink_from_athena(drink)
+    athena_barman = AthenaBarman()
+    return athena_barman.get_drink_from_athena(drink)
+
 
 # Get random drink
 @app.route('/drink/random')
@@ -28,15 +30,15 @@ def get_drink():
 # Get specific ingredient in drink
 @app.route('/drink/{drink}/{ingredient}')
 def get_ingredient_in_drink(ingredient, drink):
-    ingredient = urllib.parse.unquote(ingredient)
-    drink = urllib.parse.unquote(drink)
+#    ingredient = urllib.parse.unquote(ingredient)
+#    drink = urllib.parse.unquote(drink)
     return {'drink': drink, 'ingredient': ingredient, 'instructions': 'test instructions'}
 
 
 # Get ingredients for drink
 @app.route('/ingredients/{drink}')
 def get_ingredients(drink):
-    drink = urllib.parse.unquote(drink)
+#   drink = urllib.parse.unquote(drink)
     return {'drinkName': drink, 'ingredients': {'ingredient1': 'ing1', 'measure1': 'mea1',
                                                 'ingredient2': 'ing2', 'measure2': 'mea2',
                                                 'ingredient3': 'ing3', 'measure3': 'mea3'}}

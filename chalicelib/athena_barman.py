@@ -1,5 +1,6 @@
 import logging
-import entities
+
+from chalicelib import entities
 
 
 class AthenaBarman:
@@ -7,8 +8,7 @@ class AthenaBarman:
     DrinkWithIngredients, RandomDrink, DrinkIngredient, DrinkIngredients = range(4)
 
     # ---------------- Athena handling -----------------
-    @staticmethod
-    def get_drink_from_athena(drink_name):
+    def get_drink_from_athena(self, drink_name):
         drink_entity = entities.DrinkEntity(drink_name)
         return drink_entity.get_drink_with_ingredients()
 

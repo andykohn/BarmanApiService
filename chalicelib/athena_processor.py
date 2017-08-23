@@ -33,7 +33,7 @@ class AthenaProcessor:
             state_response = self.__client.get_query_execution(
                 QueryExecutionId=query_execution_id
             )
-            self.__my_logging_handler(state_response)
+
             state = state_response['QueryExecution']['Status']['State']
 
             if state == 'FAILED':
@@ -46,7 +46,7 @@ class AthenaProcessor:
                 self.__my_logging_handler(state_response)
                 is_query_still_running = False
             else:
-                time.sleep(1)
+                time.sleep(0.3)
 
                 # if (queryState.equals(QueryExecutionState.FAILED).toString()) {
                 #     throw new RuntimeException("Query Failed to run with Error Message: "

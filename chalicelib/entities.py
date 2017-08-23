@@ -1,4 +1,5 @@
-import athena_processor
+from chalicelib import athena_processor
+
 
 class BarmanEntity:
 
@@ -25,6 +26,7 @@ class DrinkEntity(BarmanEntity):
     valid_column = ['drink_id', 'drink_name', 'drink_category', 'drink_glass', 'drink_instructions']
 
     def __init__(self, name):
+
         super().__init__(name)
 
     def sql_statement(self):
@@ -45,17 +47,16 @@ class DrinkEntity(BarmanEntity):
                "WHERE d.iddrink IN (SELECT MAX(d.iddrink) iddrink " \
                "FROM drinks_db.drinks d " \
                "WHERE UPPER(d.strdrink) LIKE UPPER('" + self.name + "')) " \
-               "ORDER BY d.iddrink"
+               "ORDER BY d.iddrink, m.iorder"
 
     def get_drink_with_ingredients(self):
 
         athena = athena_processor.AthenaProcessor(self)
-
         query_results = athena.get_athena_results()
-
         return_results = {}
         return_results['drink'] = {}
-        return_results['drink']['ingredients'] = {}
+        drink_no = 0
+        current_drink_id = None
 
         column_info_list = query_results['ResultSet']['ResultSetMetadata']['ColumnInfo']
 
@@ -66,14 +67,22 @@ class DrinkEntity(BarmanEntity):
             if 0 == i:
                 continue
             # First item we grab the drink
-            elif 1 == i:
+            #elif 1 == i:
+            #    current_drink_id = row['Data'][0][list(row['Data'][0])[0]]
+
+            if current_drink_id != row['Data'][0][list(row['Data'][0])[0]]:
+                drink_no += 1
+                if drink_no not in return_results['drink']:
+                    return_results['drink'][drink_no] = {}
+                drink = self._process_row(row['Data'], column_info_list, DrinkEntity)
+                # return_results['drink'][drink_no].update(drink)
+                return_results['drink'][drink_no] = drink
                 current_drink_id = row['Data'][0][list(row['Data'][0])[0]]
 
-            if current_drink_id == row['Data'][0][list(row['Data'][0])[0]]:
-                drink = self._process_row(row['Data'], column_info_list, DrinkEntity)
-                return_results.update(drink)
             ingredient = self._process_row(row['Data'], column_info_list, IngredientEntity)
-            return_results['drink']['ingredients'][str(i)] = ingredient
+            if 'ingredients' not in return_results['drink'][drink_no]:
+                return_results['drink'][drink_no]['ingredients'] = {}
+            return_results['drink'][drink_no]['ingredients'][str(i)] = ingredient
         return return_results
 
 
