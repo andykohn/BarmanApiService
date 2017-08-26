@@ -6,6 +6,11 @@ from chalicelib.athena_barman import AthenaBarman
 
 app = Chalice(app_name='barman-api-service')
 app.debug = True
+# drink = "AMARETTO ROSE"
+# drink = urllib.parse.unquote(drink)
+# athena_barman = AthenaBarman()
+# print(athena_barman.get_drink_from_athena(drink))
+
 
 # import sys; print(sys.path)
 @app.route('/')
