@@ -1,2 +1,2 @@
-boto3
-chalice
+aws-encryption-sdk==1.3.0
+psycopg2==2.7.3.1

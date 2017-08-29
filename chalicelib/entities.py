@@ -1,33 +1,35 @@
 from chalicelib.helpers.postgres_processor import PostgresProcessor
 import json
 
-class BarmanEntity:
 
-    def __init__(self, name):
-        self.name = name
+# class BarmanEntity:
+#
+#     def __init__(self, name):
+#         self.name = name
+    #
+    # def _process_row(self, row, column_info_list, entity):
+    #     item = {}
+    #
+    #     valid_columns = entity.valid_column
+    #
+    #     for i, column in enumerate(column_info_list):
+    #         column_name = column_info_list[i]['Name']
+    #         if column_name in valid_columns:
+    #             if len(row[i]):
+    #                 item[column_name] = row[i][list(row[0])[0]]
+    #     return item
 
-    def _process_row(self, row, column_info_list, entity):
-        item = {}
 
-        valid_columns = entity.valid_column
-
-        for i, column in enumerate(column_info_list):
-            column_name = column_info_list[i]['Name']
-            if column_name in valid_columns:
-                if len(row[i]):
-                    item[column_name] = row[i][list(row[0])[0]]
-        return item
-
-
-class DrinkEntity(BarmanEntity):
+# class DrinkEntity(BarmanEntity):
+class DrinkEntity:
 
     #name = 'AMARETTO ROSE'
 
     valid_column = ['drink_id', 'drink_name', 'drink_category', 'drink_glass', 'drink_instructions']
 
     def __init__(self, name):
-
-        super().__init__(name)
+        #super(DrinkEntity, self).__init__(name)
+        self.__name = name
 
     def sql_statement(self):
         return "SELECT d.drink_id drink_id, " \
@@ -46,16 +48,38 @@ class DrinkEntity(BarmanEntity):
                "ON m.ingredient_id=i.ingredient_id " \
                "WHERE d.drink_id IN (SELECT MAX(d.drink_id) drink_id " \
                "FROM drinks d " \
-               "WHERE UPPER(d.drink_name) LIKE UPPER('" + self.name + "')) " \
+               "WHERE UPPER(d.drink_name) LIKE UPPER('" + self.__name + "')) " \
                "ORDER BY d.drink_id, m.ingredient_order"
-
 
     def get_drink_with_ingredients(self):
 
         postgres = PostgresProcessor(self)
         rows = postgres.execute_sql()
-        #print(rows)
+        return_results = {}
+        return_results['drink'] = {}
+        drink_no = 0
+        # for i, row in enumerate(rows):
+        #     # first row is the drink itself
+        #     if i == 0:
+        #         drink_no = row[0]
+        #         for col in self.valid_column:
+        #             return_results['drink'][col] = row[i]
+        #     if drink_no not in return_results['drink']:
+        #         print('a')
+        #         return_results['drink'][str(drink_no)] = {}
+        #     if 'ingredients' not in return_results['drink'][str(drink_no)]:
+        #         print('b')
+        #         return_results['drink'][str(drink_no)]['ingredients'] = {}
+
+        #     for col in IngredientEntity.valid_column:
+        #       return_results['drink'][drink_no]['ingredients'][str(i)] = col
+
+        #return return_results
+
+        # print(rows)
+        # print(rows[0])
         return json.dumps(rows)
+
         # athena = athena_processor.AthenaProcessor(self)
         # query_results = athena.get_athena_results()
         # return_results = {}

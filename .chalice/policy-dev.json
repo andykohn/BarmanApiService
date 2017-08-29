@@ -30,6 +30,11 @@
         "arn:aws:s3:::drinkslistvir*",
         "arn:aws:s3:::aws-athena-query-results*"
       ]
+    },
+    {
+        "Effect": "Allow",
+        "Action": "dynamodb:*",
+        "Resource": "arn:aws:dynamodb:us-east-1:572226911665:table/credentials"
     }
   ]
 }

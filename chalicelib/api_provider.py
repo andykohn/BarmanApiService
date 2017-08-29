@@ -3,12 +3,12 @@ import logging
 from chalicelib import entities
 
 
-class AthenaBarman:
+class ApiProvider:
 
     DrinkWithIngredients, RandomDrink, DrinkIngredient, DrinkIngredients = range(4)
 
     # ---------------- Athena handling -----------------
-    def get_drink_from_athena(self, drink_name):
+    def get_drink(self, drink_name):
         drink_entity = entities.DrinkEntity(drink_name)
         return drink_entity.get_drink_with_ingredients()
 

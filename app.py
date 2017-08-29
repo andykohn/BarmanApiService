@@ -1,15 +1,18 @@
-import urllib.parse
+from urllib.parse import unquote
+
 
 from chalice import Chalice
 
-from chalicelib.athena_barman import AthenaBarman
+from chalicelib import api_provider
 
 app = Chalice(app_name='barman-api-service')
 app.debug = True
+
 # drink = "AMARETTO ROSE"
-# drink = urllib.parse.unquote(drink)
-# athena_barman = AthenaBarman()
-# print(athena_barman.get_drink_from_athena(drink))
+# drink = unquote(drink)
+# # print(drink)
+# api = api_provider.ApiProvider()
+# print(api.get_drink(drink))
 
 
 # import sys; print(sys.path)
@@ -21,9 +24,9 @@ def index():
 # Get full drink details
 @app.route('/drink/{drink}')
 def get_drink(drink):
-    drink = urllib.parse.unquote(drink)
-    athena_barman = AthenaBarman()
-    return athena_barman.get_drink_from_athena(drink)
+    api = api_provider.ApiProvider()
+    drink = unquote(drink)
+    return api.get_drink(drink)
 
 
 # Get random drink
@@ -52,9 +55,9 @@ def get_ingredients(drink):
 # Get specific ingredient in drink
 @app.route('/test')
 def get_test():
-    athena = AthenaBarman
-    return athena.get_drink_from_athena
-    # return {'drink': drink, 'ingredient': ingredient, 'instructions': 'test instructions'}
+    # athena = AthenaBarman
+    # return athena.get_drink_from_athena
+    return {'drink': drink, 'ingredient': 'test', 'instructions': 'test instructions'}
 
 
 # The view function above will return {"hello": "world"}

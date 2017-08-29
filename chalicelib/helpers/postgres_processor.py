@@ -44,7 +44,7 @@ class PostgresProcessor:
     def execute_sql(self):
         try:
             conn = self.__connect()
-            print("Processing {}".format(self.__entity.sql_statement()))
+            # print("Processing {}".format(self.__entity.sql_statement()))
             cur = conn.cursor()
             cur.execute(self.__entity.sql_statement())
             conn.commit()
