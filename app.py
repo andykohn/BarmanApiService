@@ -10,10 +10,10 @@ app.debug = True
 
 # drink = "AMARETTO ROSE"
 # drink = unquote(drink)
-# # print(drink)
+# print(drink)
 # api = api_provider.ApiProvider()
 # print(api.get_drink(drink))
-
+#
 
 # import sys; print(sys.path)
 @app.route('/')

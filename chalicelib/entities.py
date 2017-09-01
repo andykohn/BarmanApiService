@@ -1,46 +1,31 @@
 from chalicelib.helpers.postgres_processor import PostgresProcessor
-import json
+from itertools import groupby
+from operator import itemgetter
 
 
-# class BarmanEntity:
-#
-#     def __init__(self, name):
-#         self.name = name
-    #
-    # def _process_row(self, row, column_info_list, entity):
-    #     item = {}
-    #
-    #     valid_columns = entity.valid_column
-    #
-    #     for i, column in enumerate(column_info_list):
-    #         column_name = column_info_list[i]['Name']
-    #         if column_name in valid_columns:
-    #             if len(row[i]):
-    #                 item[column_name] = row[i][list(row[0])[0]]
-    #     return item
-
-
-# class DrinkEntity(BarmanEntity):
-class DrinkEntity:
-
-    #name = 'AMARETTO ROSE'
-
-    valid_column = ['drink_id', 'drink_name', 'drink_category', 'drink_glass', 'drink_instructions']
+class BarmanEntity(object):
 
     def __init__(self, name):
-        #super(DrinkEntity, self).__init__(name)
-        self.__name = name
+        self.name = name
 
-    def sql_statement(self):
+
+class DrinkEntity(BarmanEntity):
+
+    valid_columns = ['drink_id', 'drink_name', 'drink_category', 'drink_glass', 'drink_instructions']
+
+    def __init__(self, name):
+        super(DrinkEntity, self).__init__(name)
+
+    def sql_drink_with_ingredients(self):
         return "SELECT d.drink_id drink_id, " \
                "d.drink_name drink_name, " \
                "d.drink_category drink_category, " \
                "d.drink_glass drink_glass, " \
                "d.drink_instructions drink_instructions, " \
                "i.ingredient_id ingredient_id, " \
-               "m.ingredient_measurement ingredient_ingredient_measurement, " \
+               "m.ingredient_measurement ingredient_measurement, " \
                "m.ingredient_order ingredient_order, " \
-               "i.ingredient_name ingredient_ingredient_name " \
+               "i.ingredient_name ingredient_name " \
                "FROM drinks d " \
                "LEFT JOIN map_drink_ingredients m " \
                "ON d.drink_id = m.drink_id " \
@@ -48,81 +33,37 @@ class DrinkEntity:
                "ON m.ingredient_id=i.ingredient_id " \
                "WHERE d.drink_id IN (SELECT MAX(d.drink_id) drink_id " \
                "FROM drinks d " \
-               "WHERE UPPER(d.drink_name) LIKE UPPER('" + self.__name + "')) " \
-               "ORDER BY d.drink_id, m.ingredient_order"
+               "WHERE UPPER(d.drink_name) LIKE UPPER('{}')) " \
+               "ORDER BY d.drink_id, m.ingredient_order".format(self.name)
 
     def get_drink_with_ingredients(self):
 
-        postgres = PostgresProcessor(self)
-        rows = postgres.execute_sql()
-        return_results = {}
-        return_results['drink'] = {}
-        drink_no = 0
-        # for i, row in enumerate(rows):
-        #     # first row is the drink itself
-        #     if i == 0:
-        #         drink_no = row[0]
-        #         for col in self.valid_column:
-        #             return_results['drink'][col] = row[i]
-        #     if drink_no not in return_results['drink']:
-        #         print('a')
-        #         return_results['drink'][str(drink_no)] = {}
-        #     if 'ingredients' not in return_results['drink'][str(drink_no)]:
-        #         print('b')
-        #         return_results['drink'][str(drink_no)]['ingredients'] = {}
+        postgres = PostgresProcessor(self.sql_drink_with_ingredients())
+        rec_rows = postgres.execute_sql()
+        return_results = {'drinks': {}}
+        grouper = itemgetter(*self.valid_columns)
+        for key, grp in groupby(rec_rows, grouper):
+            return_results['drinks'][key[0]] = dict(zip(self.valid_columns, key))
+            for item in grp:
+                if 'ingredients' not in return_results['drinks'][key[0]]:
+                    return_results['drinks'][key[0]]['ingredients'] = {}
+                # Grab only the ingredients column
+                ingredients = dict((k, v) for k, v in item.dataset.dict[0].items()
+                                   if k in IngredientEntity.valid_columns)
 
-        #     for col in IngredientEntity.valid_column:
-        #       return_results['drink'][drink_no]['ingredients'][str(i)] = col
+                return_results['drinks'][key[0]]['ingredients'][item['ingredient_id']] = ingredients
 
-        #return return_results
-
-        # print(rows)
-        # print(rows[0])
-        return json.dumps(rows)
-
-        # athena = athena_processor.AthenaProcessor(self)
-        # query_results = athena.get_athena_results()
-        # return_results = {}
-        # return_results['drink'] = {}
-        # drink_no = 0
-        # current_drink_id = None
-        #
-        # column_info_list = query_results['ResultSet']['ResultSetMetadata']['ColumnInfo']
-        #
-        # results = query_results['ResultSet']
-        #
-        # for i, row in enumerate(results['Rows']):
-        #     # Process the row. The first row of the first page holds the column names.
-        #     if 0 == i:
-        #         continue
-        #     # First item we grab the drink
-        #     #elif 1 == i:
-        #     #    current_drink_id = row['Data'][0][list(row['Data'][0])[0]]
-        #
-        #     if current_drink_id != row['Data'][0][list(row['Data'][0])[0]]:
-        #         drink_no += 1
-        #         if drink_no not in return_results['drink']:
-        #             return_results['drink'][drink_no] = {}
-        #         drink = self._process_row(row['Data'], column_info_list, DrinkEntity)
-        #         # return_results['drink'][drink_no].update(drink)
-        #         return_results['drink'][drink_no] = drink
-        #         current_drink_id = row['Data'][0][list(row['Data'][0])[0]]
-        #
-        #     ingredient = self._process_row(row['Data'], column_info_list, IngredientEntity)
-        #     if 'ingredients' not in return_results['drink'][drink_no]:
-        #         return_results['drink'][drink_no]['ingredients'] = {}
-        #     return_results['drink'][drink_no]['ingredients'][str(i)] = ingredient
-        # return return_results
+        return return_results
 
 
-class IngredientEntity:
+class IngredientEntity(DrinkEntity):
 
     name = 'amaretto almond liqueur'
     sql_statement = "SELECT ingredient_id ingredient_id, name ingredient_name " \
                     "FROM ingredients i " \
                     "WHERE UPPER(i.ingredient_name) LIKE UPPER('" + name + "')"
 
-    valid_column = ['ingredient_id', 'ingredient_name', 'ingredient_measurement', 'ingredient_order', 'ingredient_name']
+    valid_columns = ['ingredient_id', 'ingredient_name', 'ingredient_measurement', 'ingredient_order']
 
     def __init__(self, name):
-        self.name = name
+        super(DrinkEntity, self).__init__(name)
