@@ -1,6 +1,4 @@
 from urllib.parse import unquote
-
-
 from chalice import Chalice
 
 from chalicelib import api_provider
