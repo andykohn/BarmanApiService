@@ -1,7 +1,7 @@
 from chalicelib.helpers.postgres_processor import PostgresProcessor
 from itertools import groupby
 from operator import itemgetter
-
+import logging
 
 class BarmanEntity(object):
 
@@ -37,9 +37,10 @@ class DrinkEntity(BarmanEntity):
                "ORDER BY d.drink_id, m.ingredient_order".format(self.name)
 
     def get_drink_with_ingredients(self):
-
+        self.__my_logging_handler('DEBUG-1')
         postgres = PostgresProcessor(self.sql_drink_with_ingredients())
         rec_rows = postgres.execute_sql()
+        self.__my_logging_handler('DEBUG-2')
         return_results = {'drinks': {}}
         grouper = itemgetter(*self.valid_columns)
         for key, grp in groupby(rec_rows, grouper):
@@ -52,9 +53,13 @@ class DrinkEntity(BarmanEntity):
                                    if k in IngredientEntity.valid_columns)
 
                 return_results['drinks'][key[0]]['ingredients'][item['ingredient_id']] = ingredients
-
+        self.__my_logging_handler('DEBUG-3')
         return return_results
 
+    def __my_logging_handler(self, event):
+        logger = logging.getLogger()
+        logger.setLevel(logging.INFO)
+        logger.info('DEBUG:{}'.format(event))
 
 class IngredientEntity(DrinkEntity):
 

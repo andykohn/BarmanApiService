@@ -1,6 +1,6 @@
 from urllib.parse import unquote
 from chalice import Chalice
-
+import logging
 from chalicelib import api_provider
 
 app = Chalice(app_name='barman-api-service')
@@ -22,6 +22,7 @@ def index():
 # Get full drink details
 @app.route('/drink/{drink}')
 def get_drink(drink):
+
     api = api_provider.ApiProvider()
     drink = unquote(drink)
     return api.get_drink(drink)
@@ -57,6 +58,11 @@ def get_test():
     # return athena.get_drink_from_athena
     return {'drink': drink, 'ingredient': 'test', 'instructions': 'test instructions'}
 
+
+def __my_logging_handler( event):
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
+    logger.info('DEBUG:{}'.format(event))
 
 # The view function above will return {"hello": "world"}
 # whenever you make an HTTP GET request to '/'.
