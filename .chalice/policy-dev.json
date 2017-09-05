@@ -32,9 +32,9 @@
       ]
     },
     {
-        "Effect": "Allow",
-        "Action": "dynamodb:*",
-        "Resource": "arn:aws:dynamodb:us-east-1:572226911665:table/credentials"
+      "Effect": "Allow",
+      "Action": "dynamodb:*",
+      "Resource": "arn:aws:dynamodb:us-east-1:572226911665:table/credentials"
     }
   ]
 }
